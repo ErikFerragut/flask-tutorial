@@ -2,7 +2,7 @@
 
 import os   
 from flask import Flask
-from flask import render_template  # NOTICE THIS: A new function we'll be using
+from flask import render_template
 
 app = Flask(__name__)
 

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block source_url %}
+{{ source_url }}
+{% endblock %}
+
+{% block fact_list %}
+<ol>
+{% for fact in fact_list %}
+  <li>{{ fact }}</li>
+{% endfor %}
+</ol>
+{% endblock %}
+
+{% block img_link %}
+<img src={{ img_link.src }} alt={{ img_link.alt }}/>
+{% endblock %}
