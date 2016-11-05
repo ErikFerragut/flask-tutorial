@@ -1,0 +1,32 @@
+{
+  "slug": {
+    "fact_list": [
+      "Slugs can be as long as 10 inches", 
+      "Slugs can flatten themselves to 1/20th their height", 
+      "An acre of farmland contains 250,000 slugs", 
+      "Slugs can live as long as 6 years"
+    ], 
+    "img_link": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Ambigolimax.jpg/330px-Ambigolimax.jpg", 
+      "alt": "A slug"
+    }, 
+    "source_url": "http://www.softschools.com/facts/animals/slug_facts/1246/", 
+    "title": "Slugs"
+  }, 
+  "cephalopod": {
+    "fact_list": [
+      "Cephalopods have beaks and tongues", 
+      "Cephalopods have poisonous spit", 
+      "Cephalopods are predators", 
+      "Cephalopods have the superhero trait of jet propulsion", 
+      "Cephalopods can break off their arms and regenerate new ones", 
+      "Cephalopods can grow as large as sixty feet and weigh more than half a ton"
+    ], 
+    "img_link": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Octopus3.jpg/330px-Octopus3.jpg", 
+      "alt": "Swimming octopus, from wikimedia commons"
+    }, 
+    "source_url": "http://hubpages.com/education/Octopus-Squid-and-Cuttlefish-10-Weird-Fun-Facts-About-Cephalopods", 
+    "title": "Cephalopods"
+  }
+}

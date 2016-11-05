@@ -19,3 +19,13 @@ The tutorial will cover:
 * Using javascript for asynchronous updates
 * Creating a scalable deployment
 
+Unit 1 is mainly server side programming with Flask (ex 1 through 7)
+
+Unit 2 is data persistance using JSON and Redis (ex 8 through ?)
+
+Unit 3 is client side presentation with Bootstrap.js (ex ? through ?)
+
+Unit 4 is client side programming with javascript (ex ? through ?)
+
+Unit 5 is deployment (ex ? through ?)
+

@@ -1,0 +1,15 @@
+{
+  "vulture": {
+    "fact_list": [
+      "Turkey vultures can smell a dead animal from up to a mile away", 
+      "When it's hot, turkey vultures poop on their feet to cool them off", 
+      "Turkey vultures have up to a six-foot wingspan but weigh only 2 to 4 pounds"
+    ], 
+    "img_link": {
+	"src": "https://usercontent1.hubstatic.com/3314436_f520.jpg",
+        "alt": "Turkey vulture"
+    }, 
+    "source_url": "http://www.kern.audubon.org/tvfacts.htm",
+    "title": "Turkey Vultures"
+  }
+}
