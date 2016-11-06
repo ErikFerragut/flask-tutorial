@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<title>Facts about Animals</title>
+<body>
+
+<h1>Animals are amazing! Animals have superpowers! Read on!</h1>
+
+<h1>{% block title %}Animal{% endblock %}</h1>
+<p>{{ num_view }} web views</p>
+<p>Here are some
+fun facts taken from 
+<a href="{% block source_url %}http://www.wikipedia.org{% endblock %}">another site</a>.</p>
+{% block fact_list %}
+<ol>
+  <li>Fact 1</li>
+  <li>Fact 2</li>
+  <li>And so on</li>
+</ol>
+{% endblock %}
+{% block img_link %}{% endblock %}
+   
+<h1>I mean, really? That's just wild!</h1>
+
+<p>This is the html file.</p>
+</body>
+</html>
