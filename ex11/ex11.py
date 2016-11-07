@@ -58,7 +58,7 @@ class RequestForm(flask_wtf.FlaskForm):
 
     # Forms typically have a button that indicates the user is done
     # filling it out. Pressing the button makes the browser submit the
-    # data to the server. This is not a field, but an input
+    # data to the server.
     submit = wtforms.SubmitField()
     
     # See http://wtforms.simplecodes.com/docs/0.6.1/fields.html#basic-fields
@@ -102,6 +102,10 @@ def request():
     form = RequestForm()
     # validate_on_submit is True if a form was posted and it
     # validates. We will discuss validation more in the next exercise.
+    # Even though the form information was not passed into the
+    # function, it is made available to form by the route
+    # decorator. This prevents having to pass in context variables to
+    # every view.
     if form.validate_on_submit():
         # We print the received data. This will show up in the
         # terminal where you are running this server.

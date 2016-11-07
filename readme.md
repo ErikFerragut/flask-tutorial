@@ -19,31 +19,58 @@ The tutorial will cover:
 * Using javascript for asynchronous updates
 * Creating a scalable deployment
 
-Unit 1 is mainly server side programming with Flask (ex 1 through 7)
-* Add links between pages
 
-Unit 2 is data persistance using JSON and Redis (ex 8 through 10)
+Part 1 is focused on server side programming
 
-Unit 3 is about handling forms
-* Add handling forms, possibly as a new Unit?
+Chapter 1 is on handling routes & providing views using Flask (L1-3)
+* Add links between pages and use url_for and redirect
 
-Unit 4 is about sessions and logins
+Chapter 2 is on using templates (L4-7)
+
+Chapter 3 is on data persistance using JSON and Redis (L8-10)
+
+Chapter 4 is about handling forms (L11-12)
+
+Chapter 5 is about sessions and logins (L13-?)
 * Add logins and passwords and so on
 
-Unit 5 is client side presentation with Bootstrap.js (ex ? through ?)
+
+
+Part 2 is focused on client side programming
+
+Chapter 6 is about organizing the files and adding navigation bars, etc.
 * Breaking up your server files into static, templates, etc.
 
-Unit 6 is client side programming with javascript (ex ? through ?)
+Chapter 7 is client side presentation with Bootstrap.js (ch ? through ?)
+
+Chapter 8 is client side programming with javascript (ch ? through ?)
 * Linking stuff with onclick and onhover & changing web page content
 * Sending for more information from the server & using it
 
-Unit 7 is usability
-* Add routes, such as animals to the view for animal
-* convert the animal name to lower case
 
-Unit 8 is deployment (ex ? through ?)
-* Testing -- how do you do this on cloud9?
-* Migrating to aws
-* Running it from home
+Part 3 is focused on systems engineering
 
-Unit 9 is a larger example in some detail
+Chapter 8 is deployment (ch ? through ?)
+* Unit Testing & Load Testing & User Testing & A/B Testing
+* Security concerns
+* Monitoring performance & scalability
+* Monetizing the results
+* Connecting to other services (like google maps mash-ups)
+* Running it from your home
+* Migrating to AWS
+* Making your code modular
+
+
+Chapter 9 is a larger reference example in some detail
+
+
+There organization is as follows:
+1. Three top level Parts: server-side, client-side, and systems
+2. Each Part is made up of about 4 to 5 Chapters
+3. Each Chapter is made up of two to four core Lessons plus one or two
+   Deep Lessons
+
+
+# Next time: make the pages accessible from each other, use the
+# tamplates better, add a navigation menu, and refactor the python
+# into multiple files as per the standard conventions.

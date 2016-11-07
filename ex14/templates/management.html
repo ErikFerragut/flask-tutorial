@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<title>Administrative Page</title>
+<body>
+
+<h1>Admin Management</h1>
+<p>Welcome, {{ session.username }}.</p>
+
+<p>There have been a total of {{ total }} animal requests.
+They are summarized in the tables below.</p>
+
+<h3>Animals requested and the number of times request are listed below.</h3>
+<table style="width:4in">
+  <tr>
+    <td><b>Animal</b></td>
+    <td><b>Number of Requests<b></td>
+  </tr>
+  {% for animal, number in by_animal.iteritems() %}
+  <tr>
+    <td>{{ animal }}</td>
+    <td>{{ number }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<h3>Details on individual requests are listed below.</h3>
+<table style="width:4in">
+  <tr>
+    {% for field in ['name', 'scale', 'power', 'first', 'reason'] %}
+    <td><b>{{ field }}</b></td>
+    {% endfor %}
+  </tr>
+  {% for detail in details %}
+  <tr>
+    {% for field in ['name', 'scale', 'power', 'first', 'reason'] %}
+    <td>{{ detail[field] }}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>
