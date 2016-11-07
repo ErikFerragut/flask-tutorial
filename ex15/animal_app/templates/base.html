@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<title>{% block title %}
+{% if title %}
+{{ title }}
+{% else %}
+Animal App
+{% endif %}
+{% endblock %}
+</title>
+<body>
+
+{% block content %}{% endblock %}
+
+{% block footer %}
+<p>This page has been viewed {{ num_views }} times.</p>
+{% endblock %}
+
+</body>
+</html>

@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html>
-<title>Request an Animal</title>
-<body>
+{% block title %}Request an Animal{% endblock %}
 
+{% block content %}
 <h3>Wish we'd cover another animal?</h3>
 
 <form method="POST" action="/request">
@@ -14,6 +12,4 @@
 <div> {{ form.reason.label }} : {{ form.reason(rows='5',cols='40') }} </div>
 <div> {{ form.submit.label }} : {{ form.submit() }} </div>
 </form>
-
-</body>
-</html>
+{% endblock %}

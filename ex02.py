@@ -34,7 +34,7 @@ def longone():                # note the function name needn't match the route
     <td>Khan</td> 
     <td>Hot Dogs</td>
   </tr>
-</table> ''')
+</table>''')
 
 app.run(host=os.getenv('IP', '0.0.0.0'),port=int(os.getenv('PORT', 8080)),debug=True)
 

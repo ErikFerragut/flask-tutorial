@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{{ name }}{% endblock %}
+
+{% block content %}
+<h1>{{ name }}</h1>
+<p>Here are some fun facts taken from 
+<a href="{{ source_url }}">another site</a>.</p>
+
+<ol>
+{% for fact in fact_list %}
+  <li>{{ fact }}</li>
+{% endfor %}
+</ol>
+
+<img src={{ img_link.src }} alt={{ img_link.alt }}/>
+
+<h1>I mean, really? That's just wild!</h1>
+{% endblock %}

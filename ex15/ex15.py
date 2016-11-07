@@ -1,129 +1,50 @@
 # Lesson 15 -- We make our web pages into a web site by connecting them up.
 
-#
-# To Do:
-# 1. Create a file called forms.py and move all of the forms into that
-#    file. It will need to import FlaskForm, the validators, and the
-#    field types. In this file, you should remove those imports, but
-#    add an import for the newly created file. Make sure the server
-#    still works.
-#
-# 2. Create another file and call it views.py. Now move all of the
-#    views into that file. It will also need some imports, which can
-#    then be removed from this file (unless it still uses it). Add an
-#    import for the new file to this file. Test it again to make sure
-#    you didn't break it.
-#
-# 3. We were not very careful with how we used the templates to make
-#    our pages. At this point, if we wanted to change something so it
-#    goes on every page, we would not be able to without changing
-#    almost every file. So now we'll fix it. Take the parts in
-#    base.html that are not appropriate for every page and move them
-#    into animal.html. Then make request.html, login.html, and
-#    management.html extend base.html. Test this to make sure it
-#    works. To feel the benefit of this, now add something to the
-#    base.html and see that it shows up on every page.
-
-import os, json, redis, random, hashlib
-from flask import redirect, url_for
-from flask import Flask, render_template, session 
-
-
-
-Red = redis.StrictRedis()
-app = Flask(__name__)
-app.secret_key = hex(random.randrange(1<<128))  # 128 bits of randomness
-
-
-@app.route('/login', methods=['GET','POST'])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        if form.username.data == 'admin' and form.password.data == 'let-me-in':
-            session["username"] = form.username.data
-            session["favorite color"] = "Yellow"
-            print "Admin logged in!"
-
-            return redirect(url_for('hello'))  
-
-        else:
-            print "Invalid credentials: username '{}' and password '{}'".format(
-                form.username.data, form.password.data)
-        
-    elif form.submit.data:
-        print "Username or password not supplied"
-            
-    return render_template('login.html', form=form)
-
-
-@app.route('/')
-def hello():
-    if session.get("username"):
-        print "Favorite color", session["favorite color"]
-        return 'Hello {}!\n{}'.format(session.get("username"), __file__)
-    
-    else:
-        return 'Hello World!\n{}'.format(__file__)
-
-
-@app.route('/animal/<animal_name>')
-def animal(animal_name):
-    data_as_json = Red.get(animal_name)
-
-    if data_as_json is not None:
-        data = json.loads(data_as_json)
-        count = Red.incr('count')
-        return render_template('animal.html', num_views=count, **data)
-    else:
-        return "Oops, I don't know about {}".format(animal_name)
-
-    
-@app.route('/request', methods=['post', 'get'])
-def request():
-    form = RequestForm()
-    if form.validate_on_submit():
-        # Store request & update statistics on Redis
-        req_id = Red.incr('num_requests')
-        req_dict = form.data
-        Red.set("request:{}".format(req_id), json.dumps(req_dict))
-        get_back = json.loads(Red.get("request:{}".format(req_id)))
-        req_animal_cnt = Red.incr('animal-request:{}'.format(req_dict['name']))
-        # Debug information to terminal
-        print "Animal '{}' has been requested {} times, including this time.".format(
-            req_dict['name'], req_animal_cnt)
-
-    else:
-        if not form.submit.data:
-            print 'No data was submitted'
-        else:
-            print 'Data was invalid'
-            print 'Errors: {}'.format(form.errors)
-                
-    return render_template('request.html',form=form)
-
-
-@app.route('/manage')
-def manage():
-    if "username" not in session:
-        return redirect(url_for('login'))
-
-    # Now let's grab the relevant Redis information (shortened)
-    num_req = Red.get('num_requests')
-    num_req_dict = { key[key.find(':')+1:] : Red.get(key)
-                     for key in Red.scan_iter(match="animal-request:*") }
-    # We add the data from the requests
-    req_detail = [ json.loads(Red.get(key))
-                   for key in Red.scan_iter(match="request:*") ]
-    # Also, management.html has been updated accordingly
-    return render_template('management.html', total=num_req,
-                               by_animal=num_req_dict,
-                               details=req_detail)
-
-
+from animal_app import app
+import os
 app.run(host=os.getenv('IP', '0.0.0.0'),port=int(os.getenv('PORT', 8080)),debug=True)
 
 # To Do:
-# 1. First familiarize yourself with how we've refactored the code. Does it
-#    look like how you did it in the last lesson? Notice that we also added some
-#    comments to the classes and functions.
-
+# 1. First familiarize yourself with how we've refactored the code. A
+#    lot of changes were made. A short summary of what we did:
+#
+#         1. Turned the file into the animal_app package
+#         2. Created views.py for the views
+#         3. Created forms.py for the forms
+#         4. Put static files (if any) in the static subdirectory
+#         5. Moved all the templates into a subdirectory of animal_app
+#         6. Created this file for running the server
+#         7. Streamlined the templates so everything extends base.html
+#         8. Use the site count for every view (not just animal)
+#
+#    Although all these changes did not change the site's behavior,
+#    the organization will make it easier to continue growing the
+#    site.
+#
+# 2. This site has a bunch of pages, but they don't actually connect
+#    to each other.  We are now going to add a navigation list to the
+#    base page so that you can get to any page from any other page.
+#    In templates/base.html, as a block called navbar (a common
+#    abbreviation for navigation bar) in the body. In it, place links
+#    to the index (/), request, and login pages. Remember that these
+#    links look like, for example,
+#        <a href="{{ url_for('login') }}">Login</a>
+#
+# 3. Our index page is still not even a page! Create a short,
+#    welcoming page by making a new template called index.html that
+#    fills in the title and content blocks. Make it use the
+#    session["username"] value using {{ session.username }}.
+#
+# 4. Modify the index page so that if the user is not logged in, it
+#    recommends going to the login page and provides a link, but if
+#    the user is logged in it recommends visiting the manage page and
+#    provides that link.
+#
+# 5. Create a logout page according to the following steps. (A) Make a
+#    form with nothing in it but a submit button, but change its
+#    message from the default to "Log Out". (B) Create a view that
+#    uses the form. If it was clicked, pop the username from the
+#    session using session.pop("username"). Then redirect to the index
+#    page. (C) Make sure the page can only be visited if the user is
+#    logged in (see the management page for how that was done). If
+#    they aren't logged in, redirect them to the index page.

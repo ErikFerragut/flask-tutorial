@@ -20,10 +20,10 @@ The tutorial will cover:
 * Creating a scalable deployment
 
 
-Part 1 is focused on server side programming
+Part 1 is focused on server side programming (L1 -- L13)
 
 Chapter 1 is on handling routes & providing views using Flask (L1-3)
-* Add links between pages and use url_for and redirect
+* Add one or two links between pages and use url_for and redirect
 
 Chapter 2 is on using templates (L4-7)
 
@@ -31,15 +31,18 @@ Chapter 3 is on data persistance using JSON and Redis (L8-10)
 
 Chapter 4 is about handling forms (L11-12)
 
-Chapter 5 is about sessions and logins (L13-?)
-* Add logins and passwords and so on
+Chapter 5 is about sessions and logins (L13)
+
+Intermission is about refactoring (L14) (Deployment prelude?)
+* Breaking up your server files into static, templates, etc. 
 
 
+Part 2 is focused on client side programming (L15 -- ?)
 
-Part 2 is focused on client side programming
-
-Chapter 6 is about organizing the files and adding navigation bars, etc.
-* Breaking up your server files into static, templates, etc.
+Chapter 6 is about connecting the pages by adding navigation bars, etc.
+* What about changing the images to be on the server rather than
+fetched?
+* Or instead add a new image and make it local.
 
 Chapter 7 is client side presentation with Bootstrap.js (ch ? through ?)
 
@@ -71,6 +74,15 @@ There organization is as follows:
    Deep Lessons
 
 
-# Next time: make the pages accessible from each other, use the
-# tamplates better, add a navigation menu, and refactor the python
-# into multiple files as per the standard conventions.
+
+
+
+
+* Issues
+1. From ex2, Hello World! in hello() has a newline which is not an
+   html newline. Maybe we should only return html?
+2. There's no experience using url_for and redirect early on either in
+   the python or the templates.
+3. The images should be local so that results do not depend on other
+   sites being up and active.
+

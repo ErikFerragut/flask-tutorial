@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html>
-<title>Administrative Page</title>
-<body>
+{% block title %}Site Management{% endblock %}
 
+{% block content %}
 <h1>Admin Management</h1>
 <p>Welcome, {{ session.username }}.</p>
 
@@ -38,6 +36,4 @@ They are summarized in the tables below.</p>
   </tr>
   {% endfor %}
 </table>
-
-</body>
-</html>
+{% endblock %}

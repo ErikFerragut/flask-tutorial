@@ -7,19 +7,56 @@
 # to manage.
 #
 # To Do:
-# 1. Create a file called forms.py and move all of the forms into that
-#    file. It will need to import FlaskForm, the validators, and the
-#    field types. In this file, you should remove those imports, but
-#    add an import for the newly created file. Make sure the server
-#    still works.
+# 1. Create a directory called animal_app. Move the templates
+#    subirectory into it. Also add a static subdirectory and move any
+#    images into it.
 #
-# 2. Create another file and call it views.py. Now move all of the
-#    views into that file. It will also need some imports, which can
-#    then be removed from this file (unless it still uses it). Add an
-#    import for the new file to this file. Test it again to make sure
-#    you didn't break it.
+# 2. Create a file in animal_app and call it __init__.py. (When a
+#    directory has a file with that name, Python treats the directory
+#    as a Python package with the same name as the directory.) The new
+#    file should contain just the following lines (without triple
+#    quotes):
+'''
+from flask import Flask
+import random, redis
+
+Red = redis.StrictRedis()
+app = Flask(__name__)
+app.secret_key = hex(random.randrange(1<<128))  # 128 bits of randomness
+
+import animal_app.views
+'''
 #
-# 3. We were not very careful with how we used the templates to make
+# 2. Create a file called forms.py inside animal_app and move all of
+#    the forms from this file into that file. It will need to import
+#    FlaskForm, the validators, and the field types.
+# 
+# 3. Create another file in animal_app and call it views.py. Now move
+#    all of the views into that file. It will also need some imports,
+#    which can then be removed from this file (unless it still uses
+#    it). Be sure to import the forms, perhaps with
+#        from forms import *
+#    In addition, it will need app and Red from __init__.py. To
+#    import those, you do not import __init__. Instead, use
+#        from animal_app import app, Red
+#    This creates a circular import where views imports __init__ and
+#    __init__ import views. This is usually a bad idea, but it is the
+#    common practice for Flask applications.
+#
+# 4. The only import left in this file should be import os. This file
+#    will be the one you run when you want to run the server. So it
+#    needs to import app from animal_app and then do the app.run command.
+#    That should be it: two imports (app & os) and a run command.
+#
+# 5. That was a lot! Now it's time to test it. You may find that you
+#    left some imports out or put them in the wrong file. These will
+#    tend to give errors of the form:
+#        NameError: global name '<something>' is not defined
+#    In that case, find where it is needed and make sure to import the
+#    right thing. If you get stuck on this, you can go ahead and use
+#    the code from the next lesson.
+#
+# 6. We were not very careful with how we used the templates to make
 #    our pages. At this point, if we wanted to change something so it
 #    goes on every page, we would not be able to without changing
 #    almost every file. So now we'll fix it. Take the parts in
