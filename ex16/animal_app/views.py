@@ -9,12 +9,9 @@ from animal_app import app, Red
 def hello():
     if session.get("username"):
         print "Seconds since login", Red.time()[0] - session["login time"][0]
-        num_views = Red.incr('count')
-        return 'Hello {}!<br/>{}<br/>{} site views'.format(
-            session.get("username"), __file__, num_views)
-    
-    else:
-        return 'Hello World!\n{}'.format(__file__)
+    count = Red.incr('count')
+    all_animals = [ f[f.find(':')+1:] for f in Red.scan_iter(match='animal:*') ]
+    return render_template('index.html', num_views=count, all_animals=all_animals)
 
     
 @app.route('/login', methods=['GET','POST'])
@@ -41,6 +38,20 @@ def login():
 
     count = Red.incr('count')
     return render_template('login.html', num_views=count, form=form)
+
+
+@app.route('/logout', methods=['GET','POST'])
+def logout():
+    if "username" not in session:
+        return redirect(url_for('hello'))
+    
+    form = LogoutForm()
+    if form.validate_on_submit():
+        session.pop("username")
+        return redirect(url_for('hello'))
+
+    count = Red.incr('count')
+    return render_template('logout.html', num_views=count, form=form)
 
 
 @app.route('/animal/<animal_name>')
@@ -77,7 +88,7 @@ def request():
             print 'Errors: {}'.format(form.errors)
 
     count = Red.incr('count')
-    return render_template('request.html',num_views=count,form=form,)
+    return render_template('request.html',num_views=count,form=form)
 
 
 @app.route('/manage')

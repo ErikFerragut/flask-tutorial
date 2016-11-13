@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+Animal Fun Facts
+{% endblock %}
+
+{% block content %}
+{% if session.username %}
+<p>Welcome back to the Animal App, {{ session.username }}.</p>
+{% else %}
+<p>Welcome to the Animal App, where you can
+learn fun facts about animals.</p>
+{% endif %}
+
+{% if all_animals %}
+<p>The current collection of animals include:</p>
+<ul>
+{% for animal_name in all_animals %}
+  <ol><a href="{{ url_for("animal", animal_name=animal_name) }}">
+    {{ animal_name }}</a></ol>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if session.username %}
+<p>Visit the <a href="{{ url_for("manage") }}">site management
+page</a> to see what requests have come in.</p>
+<p>And remember to <a href="{{ url_for("logout") }}">log out</a>
+when you are done.</p>
+{% else %}
+<p>To log in, go to the <a href="{{ url_for("login") }}">login
+page</a></p>
+{% endif %}
+
+<p> If you want to request another animal, check out the
+<a href="{{ url_for('request') }}">request page</a>.</p>
+
+{% endblock %}

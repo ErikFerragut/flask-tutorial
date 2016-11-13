@@ -23,13 +23,14 @@ app.run(host=os.getenv('IP', '0.0.0.0'),port=int(os.getenv('PORT', 8080)),debug=
 
 # To see the web page in another tab, go to the url, which is of the form
 #   <workspace-name>-<user-name>.c9users.io:8080
+# This is referred to as <url> below. 
 
 # Note that we are running with "debug=True", so if you make changes and save it
 # the server will automatically update. This is great for development but is a
 # security risk for production.
 
 # To Do:
-#  1. change the return statement in the function and see what happens
-#  2. change the @app.route('/') to @app.route('<something-else>') and see what 
-#     happens
+#  1. Change the return statement in the function and see what happens
+#  2. Change the @app.route('/') to @app.route('/<something-else>') and see what 
+#     happens when you go to <url>:/ and <url>:/<something>
 

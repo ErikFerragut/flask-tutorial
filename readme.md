@@ -50,8 +50,17 @@ Chapter 8 is client side programming with javascript (ch ? through ?)
 * Linking stuff with onclick and onhover & changing web page content
 * Sending for more information from the server & using it
 
+Part 2.5 is about the model?
+
+Chapter ? creates a Redis interface class that handles all of the
+database interactions. Make it handle server-down issues more
+gracefully. Maybe even allow a way to checkpoint & reload the animal
+data, the user data, and the web stats (separately). The files should
+be editable.
+
 
 Part 3 is focused on systems engineering
+
 
 Chapter 8 is deployment (ch ? through ?)
 * Unit Testing & Load Testing & User Testing & A/B Testing
@@ -62,7 +71,10 @@ Chapter 8 is deployment (ch ? through ?)
 * Running it from your home
 * Migrating to AWS
 * Making your code modular
-
+* User logging module to add logging of interactions
+* Use flask-classy to turn everything into classes?
+* Use frozen-flask to create static pages for a non-form site
+* Use flask-user (built on flask-login) to manage user info & sessions
 
 Chapter 9 is a larger reference example in some detail
 

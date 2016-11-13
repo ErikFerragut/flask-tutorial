@@ -40,11 +40,20 @@ app.run(host=os.getenv('IP', '0.0.0.0'),port=int(os.getenv('PORT', 8080)),debug=
 #    the user is logged in it recommends visiting the manage page and
 #    provides that link.
 #
-# 5. Create a logout page according to the following steps. (A) Make a
+# 5. Add a list of animals (using the <ul> and <li> tags) to the Index
+#    page.  by passing it a list of all_animals. You'll have to
+#    construct that list using a Red.scan_iter call matching on
+#    "animal:*".
+#
+# 6. Create a logout page according to the following steps. (A) Make a
 #    form with nothing in it but a submit button, but change its
-#    message from the default to "Log Out". (B) Create a view that
-#    uses the form. If it was clicked, pop the username from the
-#    session using session.pop("username"). Then redirect to the index
-#    page. (C) Make sure the page can only be visited if the user is
-#    logged in (see the management page for how that was done). If
-#    they aren't logged in, redirect them to the index page.
+#    message from the default to "Log Out". Be sure to set it's action
+#    to "/logout". (B) Create a template page inheriting from
+#    base.html that shows the form. (C) Create a view that uses the
+#    form. If it was clicked, pop the username from the session using
+#    session.pop("username"). Then redirect to the index page. (D)
+#    Make sure the page can only be visited if the user is logged in
+#    (see the management page for how that was done). If they aren't
+#    logged in, redirect them to the index page. (E) Add a link to
+#    the logout page from the index page when the user is logged in.
+    
