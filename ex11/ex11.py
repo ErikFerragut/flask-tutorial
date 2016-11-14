@@ -79,7 +79,7 @@ def hello():
 
 @app.route('/animal/<animal_name>')
 def animal(animal_name):
-    data_as_json = Red.get(animal_name)
+    data_as_json = Red.get('animal:' + animal_name)
 
     if data_as_json is not None:
         data = json.loads(data_as_json)
@@ -97,7 +97,7 @@ def animal(animal_name):
 # and GET. In other views where no method is specified, it is just for
 # GET by default.
 @app.route('/request', methods=['post', 'get'])
-def request():
+def animal_req():
     # We instantiate a RequestForm object
     form = RequestForm()
     # validate_on_submit is True if a form was posted and it

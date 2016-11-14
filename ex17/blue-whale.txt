@@ -1,0 +1,11 @@
+title: Blue Whale
+facts_url: http://www.onekind.org/education/animals_a_z/whale_blue
+image_url: http://farm1.static.flickr.com/248/454156303_ec0f35ef9b_b.jpg
+image_desc: Blue whales spotted near San Francisco
+
+fun facts:
+Blue whales are the largest creatures to ever have lived on Earth
+Blue whales can swim as fast as 18 miles per hour
+Blue whales can hear each other up to 800 miles away
+Whales are mammals, so they need to breathe air
+Baby blue whales are born underwater 

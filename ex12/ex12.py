@@ -67,7 +67,7 @@ def hello():
 
 @app.route('/animal/<animal_name>')
 def animal(animal_name):
-    data_as_json = Red.get(animal_name)
+    data_as_json = Red.get('animal:' + animal_name)
 
     if data_as_json is not None:
         data = json.loads(data_as_json)
@@ -78,7 +78,7 @@ def animal(animal_name):
 
 # This is the same
 @app.route('/request', methods=['post', 'get'])
-def request():
+def animal_req():
     form = RequestForm()
     if form.validate_on_submit():
         print 'Data was valid'

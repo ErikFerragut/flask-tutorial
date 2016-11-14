@@ -97,7 +97,7 @@ import redis
 Red = redis.StrictRedis()
 for key in ['cephalopod', 'vulture', 'slug']:
     Red.set('animal:' + key, Red.get(key))
-    #   Red.delete(key)    # optional: get rid of the old keys
+    Red.delete(key)    # optional: get rid of the old keys
 '''
 # 7. After this, the code above will no longer work. Fix the Red.get
 #    command so it works again.

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<title>{% block title %}
+{% if title %}
+{{ title }}
+{% else %}
+Animal App
+{% endif %}
+{% endblock %}
+</title>
+
+<link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico') }}">
+<body>
+
+{% block banner %}
+<div>
+<img src="{{ url_for('static', filename="banner.jpg") }}" alt="Animal
+  Fun Facts"/>
+</div>
+{% endblock %}
+
+{% block navbar %}
+<a href="{{ url_for('hello') }}">Index</a>
+<a href="{{ url_for('animal_req') }}">Request</a>
+<a href="{{ url_for('login') }}">Login</a>
+{% endblock %}
+
+{% block messages %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %} 
+    </ul>
+  {% endif %}
+{% endwith %}
+{% endblock %}
+
+{% block content %}{% endblock %}
+
+{% block footer %}
+    <p>This page has been viewed {{ num_views }} times.</p>
+    <a href="{{ url_for('credits') }}">Image Credits</a>
+{% endblock %}
+
+</body>
+</html>

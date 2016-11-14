@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Log Out{% endblock %}
+
+{% block content %}
+
+<h3>Thanks for visiting, {{session.username}}.
+Click the button to logout.</h3>
+  
+<form method="POST" action="/logout">
+{{ form.hidden_tag() }}
+<div> {{ form.logout.label }} : {{ form.logout() }} </div>
+</form>
+
+{% endblock %}
