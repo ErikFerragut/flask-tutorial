@@ -93,7 +93,7 @@ print value == as_json
 # --> True
 
 # To get the complicated structure back, we use json.loads
-structure2 = json.loads(as_json)
+structure2 = json.loads(value)
 print structure2 == complicated_structure
 # --> True...  It worked!
 
