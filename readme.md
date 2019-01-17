@@ -1,3 +1,17 @@
+Disclaimer
+----------
+There are a number of issues with this tutorial:
+   * It uses Python 2.7
+   * There is no real documentation
+   * It is incomplete: the claims below are not borne out by the code
+   
+I am currently working on a book that uses Flask only for a back-end API,
+replaces the Redis data store with Postgres, and uses React for the client.
+Rather than use a low-level HTTP or XML request or resort to the jQuery,
+it uses Axios instead.
+
+Original Readme
+---------------
 I think you just need python 2.7+ and flask, which in turn requires some
 things.
 
